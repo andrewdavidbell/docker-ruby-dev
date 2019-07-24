@@ -6,9 +6,10 @@ services:
 env:
   global:
     - IMAGE_NAME=andrewbell/ruby-dev
+    - IMAGE_TAG=travis-${TRAVIS_BUILD_NUMBER}
 
 before_install:
-  - docker build -t ${IMAGE_NAME} .
+  - docker build -t ${IMAGE_NAME}:${IMAGE_TAG} .
 
 deploy:
   provider: script
