@@ -1,0 +1,17 @@
+language: ruby
+
+services:
+  - docker
+
+env:
+  global:
+    - IMAGE_NAME=andrewbell/ruby-dev
+
+before_install:
+  - docker build -t ${IMAGE_NAME} .
+
+deploy:
+  provider: script
+  script: bash docker_push
+  on:
+    branch: master
